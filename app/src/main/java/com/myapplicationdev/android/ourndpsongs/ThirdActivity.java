@@ -88,13 +88,6 @@ public class ThirdActivity extends AppCompatActivity {
             }
         });
 
-        btnCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -123,5 +116,26 @@ public class ThirdActivity extends AppCompatActivity {
                     myDialog.show();
                 }
             });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder myBuilder = new AlertDialog.Builder(ThirdActivity.this);
+                myBuilder.setTitle("Danger");
+                myBuilder.setMessage("Are you sure you want to discard the changes?");
+                myBuilder.setCancelable(false);
+
+                myBuilder.setNegativeButton("DISCARD", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                });
+
+                myBuilder.setPositiveButton("DO NOT DISCARD", null);
+                AlertDialog myDialog = myBuilder.create();
+                myDialog.show();
+            }
+        });
     }
 }
